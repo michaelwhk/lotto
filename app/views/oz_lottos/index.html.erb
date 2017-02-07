@@ -1,0 +1,61 @@
+<h1>OzLotto#index</h1>
+<p>Find me in app/views/oz_lotto/index.html.erb</p>
+
+<h1>Loots</h1>
+<%= link_to 'generate result', oz_lottos_generate_result_path %>
+<table>
+  <thead>
+    <tr>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+    <% @result.each do |a| %>
+
+        <td><%= a %></td>
+
+    <% end %>
+    </tr>
+  </tbody>
+</table>
+
+
+<td><%= link_to 'add a game', oz_lottos_add_path %></td>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number 1</th>
+      <th>Number 2</th>
+      <th>Number 3</th>
+      <th>Number 4</th>
+      <th>Number 5</th>
+      <th>Number 6</th>
+      <th>Number 7</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @oz_lottos.each do |lotto| %>
+      <tr>
+        <td><%= lotto.n1 %></td>
+        <td><%= lotto.n2 %></td>
+        <td><%= lotto.n3 %></td>
+        <td><%= lotto.n4 %></td>
+        <td><%= lotto.n5 %></td>
+        <td><%= lotto.n6 %></td>
+        <td><%= lotto.n7 %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
