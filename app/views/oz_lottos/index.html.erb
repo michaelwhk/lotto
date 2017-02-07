@@ -2,7 +2,11 @@
 <p>Find me in app/views/oz_lotto/index.html.erb</p>
 
 <h1>Loots</h1>
-<%= link_to 'generate result', oz_lottos_generate_result_path %>
+<%= form_tag "/",id: "myform" do -%>
+<%= hidden_field_tag 'param1', 'generate_result' %>
+<!-- <%= submit_tag 'generate result' %> -->
+<% end -%>
+<%= link_to 'generate result', '/',:onclick => "$('#myform').submit()" %>
 <table>
   <thead>
     <tr>

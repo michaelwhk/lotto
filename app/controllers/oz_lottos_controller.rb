@@ -2,7 +2,11 @@ class OzLottosController < ApplicationController
   def index
     # generate_result
     @result = []
-    # @oz_lottos = OzLotto.all
+    @oz_lottos = OzLotto.all
+    puts params
+    if params[:param1] == "generate_result"
+      generate_result
+    end
   end
 
   def add
