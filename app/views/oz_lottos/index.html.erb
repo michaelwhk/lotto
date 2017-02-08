@@ -2,35 +2,11 @@
 <p>Find me in app/views/oz_lotto/index.html.erb</p>
 
 <h1>Loots</h1>
-<%= form_tag "/",id: "myform" do -%>
-<%= hidden_field_tag 'param1', 'generate_result' %>
-<!-- <%= submit_tag 'generate result' %> -->
-<% end -%>
-<%= link_to 'generate result', '/',:onclick => "$('#myform').submit()" %>
-<table>
-  <thead>
-    <tr>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-      <th>7</th>
-      <th>8</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <tr>
-    <% @result.each do |a| %>
-
-        <td><%= a %></td>
-
-    <% end %>
-    </tr>
-  </tbody>
-</table>
+<%= link_to 'Generate result', oz_lottos_generate_result_path, remote: true %>
+<div class="row">
+  <div class="" id="result" style="display:none;"></div>
+</div>
 
 
 <td><%= link_to 'add a game', oz_lottos_add_path %></td>

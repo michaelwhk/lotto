@@ -1,12 +1,15 @@
 class OzLottosController < ApplicationController
+  respond_to :html, :js
+
   def index
     # generate_result
     @result = []
     @oz_lottos = OzLotto.all
-    puts params
-    if params[:param1] == "generate_result"
-      generate_result
-    end
+    # puts params
+    # if params[:param1] == "generate_result"
+    #   generate_result
+    # end
+
   end
 
   def add
@@ -30,7 +33,6 @@ class OzLottosController < ApplicationController
       full_pool.delete(picked_number)
       times = times - 1
     end
-    render :index
     # return result
   end
 
