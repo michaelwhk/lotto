@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'oz_lottos/index'
+  post 'oz_lottos/index'
 
   get 'oz_lottos/add'
 
@@ -13,5 +14,5 @@ Rails.application.routes.draw do
 
   # set root route
   # root 'records#index'
-  root 'oz_lottos#index'
+  root 'oz_lottos#index', via: [:get, :post]
 end
