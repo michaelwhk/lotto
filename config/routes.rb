@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'oz_lottos/add'
 
-  get 'oz_lottos/remove'
+  delete 'oz_lottos/remove/:id', to: 'oz_lottos#remove', as: 'remove_lotto'
 
   get 'oz_lottos/generate_result'
 

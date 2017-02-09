@@ -1,0 +1,23 @@
+<table>
+
+    <% @oz_lottos.each do |lotto| %>
+      <tr>
+        <td><%= lotto.n1 %></td>
+        <td><%= lotto.n2 %></td>
+        <td><%= lotto.n3 %></td>
+        <td><%= lotto.n4 %></td>
+        <td><%= lotto.n5 %></td>
+        <td><%= lotto.n6 %></td>
+        <td><%= lotto.n7 %></td>
+        <td><%#= link_to edit_task_path(task), remote: true do %>
+          <button class="btn btn-primary btn-xs">Edit</button>
+        <%# end %></td>
+        <td>
+          <%= link_to remove_lotto_path(lotto), remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <button class="btn btn-danger btn-xs">Delete!</button>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+</table>

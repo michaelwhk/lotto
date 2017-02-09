@@ -9,33 +9,9 @@
 </div>
 
 
-<td><%= link_to 'add a game', oz_lottos_add_path %></td>
+<%= link_to 'add a game', oz_lottos_add_path, remote: true %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Number 1</th>
-      <th>Number 2</th>
-      <th>Number 3</th>
-      <th>Number 4</th>
-      <th>Number 5</th>
-      <th>Number 6</th>
-      <th>Number 7</th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @oz_lottos.each do |lotto| %>
-      <tr>
-        <td><%= lotto.n1 %></td>
-        <td><%= lotto.n2 %></td>
-        <td><%= lotto.n3 %></td>
-        <td><%= lotto.n4 %></td>
-        <td><%= lotto.n5 %></td>
-        <td><%= lotto.n6 %></td>
-        <td><%= lotto.n7 %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="" id="lotto" style="display:none;"></div>
+  <div class="" id="oz_lottos"><%= render 'oz_lottos' %></div>
+</div>
