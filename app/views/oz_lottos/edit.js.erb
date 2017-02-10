@@ -1,3 +1,4 @@
-// $('#lotto_id_6').append("<%= j (render 'form' ) %>");
-$("<%= j (render 'form' ) %>").insertAfter('#lotto_id_<%= @oz_lotto.id %>');
+$('#form_id_<%= @oz_lotto.id %>').html("<%= j (render 'form' ) %>");
 $('#lotto_id_<%= @oz_lotto.id %>').hide();
+$('#form_id_<%= @oz_lotto.id %>').fadeIn(350);
+// $("<%= j (render 'form' ) %>").insertAfter('#lotto_id_<%= @oz_lotto.id %>');
