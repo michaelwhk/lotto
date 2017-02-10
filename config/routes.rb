@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'oz_lottos/add'
+  post 'oz_lottos/add'
 
   get 'oz_lottos/generate_result'
+  post 'oz_lottos/generate_result'
 
   resources :oz_lottos
 
