@@ -1,5 +1,5 @@
 class OzLottosController < ApplicationController
-  before_action :all_lottos, only: [:index, :add, :destroy, :edit, :update]
+  before_action :all_lottos, only: [:index, :add, :destroy, :edit]
   before_action :set_lotto, only: [:edit, :update, :destroy]
   respond_to :html, :js
 
@@ -19,8 +19,9 @@ class OzLottosController < ApplicationController
   end
 
   def update
-    @vacant_number = vacant_number(@oz_lottos)
     @oz_lotto.update_attributes(lotto_params)
+    @oz_lottos = OzLotto.all
+    @vacant_number = vacant_number(@oz_lottos)
   end
 
   def generate_result
