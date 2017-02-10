@@ -1,14 +1,14 @@
 <tr id="form">
   <td colspan="10">
-    <%= simple_form_for @oz_lotto, remote: true do |f|   %>
-      <%= f.input  :n1, as: :integer %>
-      <%= f.input  :n2, as: :integer %>
-      <%= f.input  :n3, as: :integer %>
-      <%= f.input  :n4, as: :integer %>
-      <%= f.input  :n5, as: :integer %>
-      <%= f.input  :n6, as: :integer %>
-      <%= f.input  :n7, as: :integer %>
-      <%= f.button :submit %>
+    <%= form_for @oz_lotto, remote: true do |f|   %>
+      <%= f.text_field  :n1, as: :integer, class: "lotto" %>
+      <%= f.text_field  :n2, as: :integer, class: "lotto" %>
+      <%= f.text_field  :n3, as: :integer, class: "lotto" %>
+      <%= f.text_field  :n4, as: :integer, class: "lotto" %>
+      <%= f.text_field  :n5, as: :integer, class: "lotto" %>
+      <%= f.text_field  :n6, as: :integer, class: "lotto" %>
+      <%= f.text_field  :n7, as: :integer, class: "lotto" %>
+      <%= f.submit "Update" %>
     <% end %>
   </td>
 </tr>
