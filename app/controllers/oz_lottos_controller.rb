@@ -1,6 +1,6 @@
 class OzLottosController < ApplicationController
-  before_action :all_lottos, only: [:index, :add, :remove]
-  before_action :set_lotto, only: [:remove]
+  before_action :all_lottos, only: [:index, :add, :destroy, :edit, :update]
+  before_action :set_lotto, only: [:edit, :update, :destroy]
   respond_to :html, :js
 
   def index
@@ -13,11 +13,15 @@ class OzLottosController < ApplicationController
     @vacant_number = vacant_number(@oz_lottos)
   end
 
-  def remove
+  def destroy
     @oz_lotto.destroy
     @vacant_number = vacant_number(@oz_lottos)
   end
 
+  def update
+    @vacant_number = vacant_number(@oz_lottos)
+    @oz_lotto.update_attributes(lotto_params)
+  end
 
   def generate_result
     @result = generate_lotto
@@ -46,6 +50,10 @@ class OzLottosController < ApplicationController
         pool = pool - array
       end
       return pool
+    end
+
+    def lotto_params
+      params.require(:oz_lotto).permit(:n1, :n2, :n3, :n4, :n5, :n6, :n7)
     end
 
     def generate_lotto

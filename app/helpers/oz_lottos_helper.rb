@@ -10,13 +10,7 @@ module OzLottosHelper
     return count_result
   end
 
-  def vacant_number(lottos)
-    pool = (1..45).to_a
-    lottos.each do |l|
-      pool = pool - l
-    end
-    return pool
-  end
+  
 
 
 end
