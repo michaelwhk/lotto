@@ -15,13 +15,41 @@
     <% @oz_lottos.each do |lotto| %>
 
         <tr id="lotto_id_<%= lotto.id %>">
-          <td><%= lotto.n1 %></td>
-          <td><%= lotto.n2 %></td>
-          <td><%= lotto.n3 %></td>
-          <td><%= lotto.n4 %></td>
-          <td><%= lotto.n5 %></td>
-          <td><%= lotto.n6 %></td>
-          <td><%= lotto.n7 %></td>
+          <% if @current_result.include?(lotto.n1) %>
+              <td class="lotto-match"><%= lotto.n1 %></td>
+              <% else %>
+              <td><%= lotto.n1 %></td>
+          <% end %>
+          <% if @current_result.include?(lotto.n2) %>
+              <td class="lotto-match"><%= lotto.n2 %></td>
+              <% else %>
+              <td><%= lotto.n2 %></td>
+          <% end %>
+          <% if @current_result.include?(lotto.n3) %>
+              <td class="lotto-match"><%= lotto.n3 %></td>
+              <% else %>
+              <td><%= lotto.n3 %></td>
+          <% end %>
+          <% if @current_result.include?(lotto.n4) %>
+              <td class="lotto-match"><%= lotto.n4 %></td>
+              <% else %>
+              <td><%= lotto.n4 %></td>
+          <% end %>
+          <% if @current_result.include?(lotto.n5) %>
+              <td class="lotto-match"><%= lotto.n5 %></td>
+              <% else %>
+              <td><%= lotto.n5 %></td>
+          <% end %>
+          <% if @current_result.include?(lotto.n6) %>
+              <td class="lotto-match"><%= lotto.n6 %></td>
+              <% else %>
+              <td><%= lotto.n6 %></td>
+          <% end %>
+          <% if @current_result.include?(lotto.n7) %>
+              <td class="lotto-match"><%= lotto.n7 %></td>
+              <% else %>
+              <td><%= lotto.n7 %></td>
+          <% end %>
           <td>
             <%= link_to edit_oz_lotto_path(lotto), remote: true do %>
               <button class="btn btn-primary btn-xs">EDIT</button>

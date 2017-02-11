@@ -2,12 +2,11 @@ Rails.application.routes.draw do
   post 'oz_lottos/add'
 
   get 'results/:id', to: 'oz_lottos#edit_result', as: 'edit_result'
+
   patch 'results/:id', to: 'oz_lottos#update_result', as: 'result'
-
-  resources :test do
-    get 'oz_lottos/add'
-  end
-
+  put 'results/:id', to: 'oz_lottos#update_result'
+  delete 'results/:id', to: 'oz_lottos#update_result'
+  
   get 'oz_lottos/generate_result'
   post 'oz_lottos/generate_result'
 

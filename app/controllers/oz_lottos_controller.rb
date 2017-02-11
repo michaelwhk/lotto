@@ -5,10 +5,12 @@ class OzLottosController < ApplicationController
   include ApplicationHelper
 
   def index
+    @current_result = last_result_array
     set_vacant_number(@oz_lottos)
   end
 
   def add
+    @current_result = last_result_array
     # show generated lotto
     @lotto = generate_lotto
     # put lotto into lottos list
@@ -22,19 +24,20 @@ class OzLottosController < ApplicationController
   end
 
   def update
+    @current_result = last_result_array
     @oz_lotto.update_attributes(lotto_params)
     all_lottos
     set_vacant_number(@oz_lottos)
   end
 
   def generate_result
-    # @result = generate_lotto
     array = generate_lotto
     to_string = array.join(",") # convert array to string
     Result.destroy_all("id > 0")
     Result.create(lotto: to_string )
     @result = array
     @results = Result.all
+    @current_result = last_result_array
   end
 
   def edit_result
@@ -43,11 +46,18 @@ class OzLottosController < ApplicationController
 
   def update_result
     set_result
+    # put params from form into a array
     array = [params[:n1],params[:n2],params[:n3],params[:n4],params[:n5],params[:n6],params[:n7]]
+    # convert array to a string
     string = to_string(array)
+    # update attribute in current result
     @result.update_attributes(lotto: string)
-    # @result.update_attributes(result_params)
+    # reload results and send @results to view
     load_results
+    @current_result = last_result_array
+    all_lottos
+    set_vacant_number(@oz_lottos)
+
   end
 
 
@@ -55,8 +65,13 @@ class OzLottosController < ApplicationController
     def load_results
       @results = Result.all
     end
+
     def all_lottos
       @oz_lottos = OzLotto.all
+    end
+
+    def last_result_array
+      to_array(Result.last.lotto)
     end
 
     def set_vacant_number(all_lottos)
@@ -85,9 +100,9 @@ class OzLottosController < ApplicationController
       params.require(:oz_lotto).permit(:n1, :n2, :n3, :n4, :n5, :n6, :n7)
     end
 
-    def result_params
-      params.require(:result).permit(:lotto)
-    end
+    # def result_params
+    #   params.require(:result).permit(:lotto)
+    # end
 
     def generate_lotto
       full_pool = (1..45).to_a
