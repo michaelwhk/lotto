@@ -32,7 +32,7 @@ gem 'responders', '~> 2.0'
 # gem 'capistrano-rails', group: :development
 
 gem 'simple_form'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 
 group :development, :test do

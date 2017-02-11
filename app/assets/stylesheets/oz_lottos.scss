@@ -4,5 +4,12 @@
 
 
 input[type="text"].lotto {
-  width: 22px;
+  width: 61px;
+  height: 39px;
+  padding: 8px;
+}
+
+#result, #result_lotto, #lotto > table {
+  width: 50%;
+  margin: 10px;
 }

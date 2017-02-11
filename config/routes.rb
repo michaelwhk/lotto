@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  get 'oz_lottos/add'
+  post 'oz_lottos/add'
+
+  get 'results/:id', to: 'oz_lottos#edit_result', as: 'edit_result'
+  post 'results/', to: 'oz_lottos#update_result', as: 'update_result'
 
   get 'oz_lottos/generate_result'
+  post 'oz_lottos/generate_result'
 
   resources :oz_lottos
 

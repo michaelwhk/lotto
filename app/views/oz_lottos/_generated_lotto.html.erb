@@ -1,0 +1,17 @@
+<table class="table table-condensed text-center" style="width=70%">
+  <tbody>
+    <% @results.each do |r| %>
+    <tr class="success">
+        <% to_array(r.lotto).each do |a| %>
+        <td><%= a %></td>
+        <% end %>
+        <td>
+          <%= link_to edit_result_path(r), remote: true do %>
+            <button class="btn btn-primary btn-xs">EDIT</button>
+          <% end %>
+      </td>
+    </tr>
+
+    <% end %>
+  </tbody>
+</table>

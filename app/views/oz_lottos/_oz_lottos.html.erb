@@ -1,4 +1,6 @@
-<table>
+<table class="table table-hover">
+
+    <thead>
       <tr>
         <th colspan="9">lottos</th>
         <th>1-9</th>
@@ -7,6 +9,8 @@
         <th>30-39</th>
         <th>40-45</th>
       </tr>
+    </thead>
+
 
     <% @oz_lottos.each do |lotto| %>
 
@@ -20,12 +24,12 @@
           <td><%= lotto.n7 %></td>
           <td>
             <%= link_to edit_oz_lotto_path(lotto), remote: true do %>
-              <button class="btn btn-primary btn-xs">Edit</button>
+              <button class="btn btn-primary btn-xs">EDIT</button>
             <% end %>
           </td>
           <td>
             <%= link_to lotto, remote: true, method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <button class="btn btn-danger btn-xs">Delete!</button>
+              <button class="btn btn-danger btn-xs">REMOVE</button>
             <% end %>
           </td>
           <td>
@@ -61,3 +65,6 @@
     <% end %>
   </tr>
 </table>
+
+<hr>
+<p></p>
