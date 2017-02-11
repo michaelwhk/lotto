@@ -6,7 +6,8 @@
   <div class="result">
     <%= button_to('Generate result', oz_lottos_generate_result_path, remote: true, class: 'btn btn-primary') %>
     <div class="">
-      <div class="" id="result" style="display:none;"></div>
+      <div class="" id="result_lotto" style=""><%= render 'generated_lotto' %></div>
+      <div class="" id="result_form" style="display:none;"></div>
     </div>
   </div>
   <hr>

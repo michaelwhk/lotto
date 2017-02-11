@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207151802) do
+ActiveRecord::Schema.define(version: 20170211131330) do
 
   create_table "oz_lottos", force: :cascade do |t|
     t.integer  "n1"
@@ -27,6 +27,12 @@ ActiveRecord::Schema.define(version: 20170207151802) do
   create_table "records", force: :cascade do |t|
     t.string   "text"
     t.integer  "number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.string   "lotto"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

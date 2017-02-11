@@ -1,7 +1,8 @@
 class OzLottosController < ApplicationController
-  before_action :all_lottos, only: [:index, :add, :destroy, :edit]
+  before_action :all_lottos, :load_results, only: [:index, :add, :destroy, :edit]
   before_action :set_lotto, only: [:edit, :update, :destroy]
   respond_to :html, :js
+  include ApplicationHelper
 
   def index
     set_vacant_number(@oz_lottos)
@@ -27,11 +28,30 @@ class OzLottosController < ApplicationController
   end
 
   def generate_result
-    @result = generate_lotto
+    # @result = generate_lotto
+    array = generate_lotto
+    to_string = array.join(",") # convert array to string
+    Result.destroy_all("id > 0")
+    Result.create(lotto: to_string )
+    @result = array
+    @results = Result.all
+  end
+
+  def edit_result
+    set_result
+  end
+
+  def update_result
+    set_result
+    @result.update_attributes(result_params)
+    load_results
   end
 
 
   private
+    def load_results
+      @results = Result.all
+    end
     def all_lottos
       @oz_lottos = OzLotto.all
     end
@@ -44,12 +64,11 @@ class OzLottosController < ApplicationController
       @oz_lotto = OzLotto.find(params[:id])
     end
 
-    # def range_count(start,end,lotto)
-    #   array = (start...end).to_a
-    #   a2 = [lotto.n1,lotto.n2,lotto.n3,lotto.n4,lotto.n5,lotto.n6,lotto.n7]
-    #   count_result = (array - (array - a2)).count
-    #   return count_result
-    # end
+    def set_result
+      result = Result.find(params[:id])
+      @result = to_array(result.lotto)
+    end
+
     def vacant_number(lottos)
       pool = (1..45).to_a
       lottos.each do |l|
@@ -61,6 +80,10 @@ class OzLottosController < ApplicationController
 
     def lotto_params
       params.require(:oz_lotto).permit(:n1, :n2, :n3, :n4, :n5, :n6, :n7)
+    end
+
+    def result_params
+      params.require(:result).permit(:lotto)
     end
 
     def generate_lotto
