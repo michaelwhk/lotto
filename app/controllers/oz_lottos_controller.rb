@@ -43,6 +43,10 @@ class OzLottosController < ApplicationController
 
   def update_result
     set_result
+    
+    array = [params[:n1],params[:n2],params[:n3],params[:n4],params[:n5],params[:n6],params[:n7]]
+    string = to_string(array)
+
     @result.update_attributes(result_params)
     load_results
   end
@@ -65,8 +69,8 @@ class OzLottosController < ApplicationController
     end
 
     def set_result
-      result = Result.find(params[:id])
-      @result = to_array(result.lotto)
+      @result = Result.find(params[:id])
+      # @result = to_array(result.lotto)
     end
 
     def vacant_number(lottos)

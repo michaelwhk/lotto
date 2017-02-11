@@ -1,12 +1,13 @@
 <td colspan="10">
-  <%= form_tag("/results", method: "post") do %>
-    <%= text_field_tag(:n1, @result[0]) %>
-    <%= text_field_tag(:n2, @result[1]) %>
-    <%= text_field_tag(:n3, @result[2]) %>
-    <%= text_field_tag(:n4, @result[3]) %>
-    <%= text_field_tag(:n5, @result[4]) %>
-    <%= text_field_tag(:n6, @result[5]) %>
-    <%= text_field_tag(:n7, @result[6]) %>
+  <%= form_for @result, remote: true do %>
+    <% array = to_array(@result.lotto) %>
+    <%= text_field_tag(:n1, array[0]) %>
+    <%= text_field_tag(:n2, array[1]) %>
+    <%= text_field_tag(:n3, array[2]) %>
+    <%= text_field_tag(:n4, array[3]) %>
+    <%= text_field_tag(:n5, array[4]) %>
+    <%= text_field_tag(:n6, array[5]) %>
+    <%= text_field_tag(:n7, array[6]) %>
     <%= submit_tag("update") %>
   <% end %>
 </td>
