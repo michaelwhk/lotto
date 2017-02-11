@@ -4,24 +4,26 @@ class OzLottosController < ApplicationController
   respond_to :html, :js
 
   def index
-    @vacant_number = vacant_number(@oz_lottos)
+    set_vacant_number(@oz_lottos)
   end
 
   def add
+    # show generated lotto
     @lotto = generate_lotto
+    # put lotto into lottos list
     @oz_lottos.create(n1: @lotto[0], n2: @lotto[1], n3: @lotto[2], n4: @lotto[3], n5: @lotto[4], n6: @lotto[5], n7: @lotto[6])
-    @vacant_number = vacant_number(@oz_lottos)
+    set_vacant_number(@oz_lottos)
   end
 
   def destroy
     @oz_lotto.destroy
-    @vacant_number = vacant_number(@oz_lottos)
+    set_vacant_number(@oz_lottos)
   end
 
   def update
     @oz_lotto.update_attributes(lotto_params)
-    @oz_lottos = OzLotto.all
-    @vacant_number = vacant_number(@oz_lottos)
+    all_lottos
+    set_vacant_number(@oz_lottos)
   end
 
   def generate_result
@@ -32,6 +34,10 @@ class OzLottosController < ApplicationController
   private
     def all_lottos
       @oz_lottos = OzLotto.all
+    end
+
+    def set_vacant_number(all_lottos)
+      @vacant_number = vacant_number(all_lottos)
     end
 
     def set_lotto
