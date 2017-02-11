@@ -1,13 +1,23 @@
-<td colspan="10">
-  <%= form_for @result, remote: true do %>
-    <% array = to_array(@result.lotto) %>
-    <%= text_field_tag(:n1, array[0]) %>
-    <%= text_field_tag(:n2, array[1]) %>
-    <%= text_field_tag(:n3, array[2]) %>
-    <%= text_field_tag(:n4, array[3]) %>
-    <%= text_field_tag(:n5, array[4]) %>
-    <%= text_field_tag(:n6, array[5]) %>
-    <%= text_field_tag(:n7, array[6]) %>
-    <%= submit_tag("update") %>
-  <% end %>
-</td>
+<table class="table table-condensed" style="width:70%">
+  <tbody>
+    <tr>
+      <td>
+        <%= form_for @result, remote: true do %>
+          <% array = to_array(@result.lotto) %>
+          <%= text_field_tag(:n1, array[0], class: 'lotto') %>
+          <%= text_field_tag(:n2, array[1], class: 'lotto') %>
+          <%= text_field_tag(:n3, array[2], class: 'lotto') %>
+          <%= text_field_tag(:n4, array[3], class: 'lotto') %>
+          <%= text_field_tag(:n5, array[4], class: 'lotto') %>
+          <%= text_field_tag(:n6, array[5], class: 'lotto') %>
+          <%= text_field_tag(:n7, array[6], class: 'lotto') %>
+          <%= text_field_tag(:n8, array[7], class: 'lotto') %>
+          <%= text_field_tag(:n9, array[8], class: 'lotto') %>
+          <%= submit_tag("update") %>
+        <% end %>
+      </td>
+    </tr>
+
+  </tbody>
+
+</table>

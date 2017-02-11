@@ -1,55 +1,23 @@
 <table class="table table-hover">
-
     <thead>
       <tr>
-        <th colspan="9">lottos</th>
-        <th>1-9</th>
-        <th>10-19</th>
-        <th>20-29</th>
-        <th>30-39</th>
-        <th>40-45</th>
+        <th colspan="9">What have you had </th>
+        <th>1s</th>
+        <th>10s</th>
+        <th>20s</th>
+        <th>30s</th>
+        <th>40s</th>
       </tr>
     </thead>
-
-
     <% @oz_lottos.each do |lotto| %>
-
         <tr id="lotto_id_<%= lotto.id %>">
-          <% if @current_result.include?(lotto.n1) %>
-              <td class="lotto-match"><%= lotto.n1 %></td>
-              <% else %>
-              <td><%= lotto.n1 %></td>
-          <% end %>
-          <% if @current_result.include?(lotto.n2) %>
-              <td class="lotto-match"><%= lotto.n2 %></td>
-              <% else %>
-              <td><%= lotto.n2 %></td>
-          <% end %>
-          <% if @current_result.include?(lotto.n3) %>
-              <td class="lotto-match"><%= lotto.n3 %></td>
-              <% else %>
-              <td><%= lotto.n3 %></td>
-          <% end %>
-          <% if @current_result.include?(lotto.n4) %>
-              <td class="lotto-match"><%= lotto.n4 %></td>
-              <% else %>
-              <td><%= lotto.n4 %></td>
-          <% end %>
-          <% if @current_result.include?(lotto.n5) %>
-              <td class="lotto-match"><%= lotto.n5 %></td>
-              <% else %>
-              <td><%= lotto.n5 %></td>
-          <% end %>
-          <% if @current_result.include?(lotto.n6) %>
-              <td class="lotto-match"><%= lotto.n6 %></td>
-              <% else %>
-              <td><%= lotto.n6 %></td>
-          <% end %>
-          <% if @current_result.include?(lotto.n7) %>
-              <td class="lotto-match"><%= lotto.n7 %></td>
-              <% else %>
-              <td><%= lotto.n7 %></td>
-          <% end %>
+              <td class="<%= lotto_match(lotto.n1) %>"><%= lotto.n1 %></td>
+              <td class="<%= lotto_match(lotto.n2) %>"><%= lotto.n2 %></td>
+              <td class="<%= lotto_match(lotto.n3) %>"><%= lotto.n3 %></td>
+              <td class="<%= lotto_match(lotto.n4) %>"><%= lotto.n4 %></td>
+              <td class="<%= lotto_match(lotto.n5) %>"><%= lotto.n5 %></td>
+              <td class="<%= lotto_match(lotto.n6) %>"><%= lotto.n6 %></td>
+              <td class="<%= lotto_match(lotto.n7) %>"><%= lotto.n7 %></td>
           <td>
             <%= link_to edit_oz_lotto_path(lotto), remote: true do %>
               <button class="btn btn-primary btn-xs">EDIT</button>
@@ -82,17 +50,16 @@
     <% end %>
 </table>
 
-<table>
-  <tr>
-    <th colspan=" <%= @vacant_number.count %> ">The <%= @vacant_number.count %> missing number is </th>
-  </tr>
-  <tr>
+<div class="container">
+  <h4>The <%= pluralize @vacant_number.count, "missing number" %>:</h4>
+  <ul>
     <% @vacant_number.each do |n| %>
-      <td><%= n %></td>
-
+      <li><%= n %></li>
     <% end %>
-  </tr>
-</table>
+  </ul>
+</div>
+
+
 
 <hr>
 <p></p>

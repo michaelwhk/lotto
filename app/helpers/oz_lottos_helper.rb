@@ -7,4 +7,20 @@ module OzLottosHelper
     return count_result
   end
 
+  def lotto_match(number)
+    if @current_result.include?(number)
+      return "lotto-match"
+    elsif @current_sup.include?(number)
+      return "sup-match"
+    else
+      return ""
+    end
+  end
+
+  def isSup(i)
+    if i > 6
+      return "sup-match"
+    end
+  end
+
 end

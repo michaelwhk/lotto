@@ -4,16 +4,20 @@
 
 
 input[type="text"].lotto {
-  width: 61px;
-  height: 39px;
+  width: 60px;
+  height: 35px;
   padding: 8px;
 }
 
-#result, #result_lotto, #lotto > table {
-  width: 50%;
+#result, #result_lotto, #lotto, #result_form > table {
+  width: 60%;
   margin: 10px;
 }
 
 .lotto-match {
   color: #ff0000;
+}
+
+.sup-match {
+  color: blue;
 }

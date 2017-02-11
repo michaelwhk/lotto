@@ -1,9 +1,9 @@
-<table class="table table-condensed text-center" style="width=70%">
+<table class="table table-condensed text-center" style="width:70%">
   <tbody>
     <% @results.each do |r| %>
     <tr class="success">
         <% to_array(r.lotto).each do |a| %>
-        <td><%= a %></td>
+        <td class="<%= isSup(to_array(r.lotto).index(a)) %>"><%= a %></td>
         <% end %>
         <td>
           <%= link_to edit_result_path(r), remote: true do %>
