@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## This is an application for redeem Oz Lotto a little easier.
 
-Things you may want to cover:
+### It's ONLY support oz-lotto.
 
-* Ruby version
+**Functions:**
+1. Generate/modify a result. (7 winning numbers and 2 supplementary numbers)
+2. Add/modify one games randomly.
+3. Matching result of your selected games.
+4. Show missing number of all your selected games.
+5. Show how many times appear in one game in different section.
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+**How To Use**
+- bundle install/update
+- add a database.yml in /config/
+- migrate database
+- visit localhost:3000
